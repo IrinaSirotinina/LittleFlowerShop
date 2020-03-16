@@ -1,0 +1,49 @@
+﻿@page
+@model FlowerShop.StoreFrontModel
+@{
+    ViewData["Title"] = "StoreFront";
+}
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+
+    </head>
+    <body>
+
+        <h3>Our Products</h3>
+        <table class="table">
+
+            <tr align="center">
+
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+                <th scope="col">Price</th>
+
+                <th scope="col"></th>
+            </tr>
+
+            @foreach (var product in Model.Products)
+            {
+                <tr align="center">
+
+                    <td><b>@product.Name</b></td>
+                    <td>@product.Description</td>
+                    <td><a asp-page="/Products" asp-page-handler="buynow" asp-route-id="@product.Id"><img src="~/images/@product.Photo" width="240" height="240" /></a></td>
+                    <td>$@product.Price</td>
+
+                    <td>
+                        <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id"><input type="button" value="Buy" class="btn-primary" /></a>
+                    </td>
+
+                </tr>
+            }
+
+
+
+        </table>
+
+    </body>
+    </html>
+

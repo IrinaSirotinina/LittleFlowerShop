@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "StoreFront";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Welcome to the Little Flower Shop</h1>
+        <p>Browse our beautiful bouquets for every occasion</p>
+        <a asp-page="/StoreFront"><input type="button" width="65" value="Start Shopping" class="btn-primary" /></a>
+    </div>
+
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a asp-page="/StoreFront">
+                        <img src="~/images/pinkpeonie.jpg" alt="Pink Peonies" width="1000" height="650">
+                        <div class="carousel-caption">
+                            <h3>Spring Flowers</h3>
+                            <p>Beautiful Pink Peonies</p>
+                        </div>
+                        </a>
+                </div>
+                <div class="carousel-item">
+                    <a asp-page="/StoreFront">
+                        <img src="~/images/tableflowers.jpg" alt="Bridal" width="1000" height="650">
+                        <div class="carousel-caption">
+                            <h3>Wedding</h3>
+                            <p>Shop Wedding Bouquets</p>
+                        </div>
+                        </a>
+                </div>
+                <div class="carousel-item">
+                    <a asp-page="/StoreFront">
+                        <img src="~/images/roses4.jpg" alt="Roses" width="1000" height="650">
+                        <div class="carousel-caption">
+                            <h3>Roses</h3>
+                            <p>Shop Our Rose Bouquets For Every Occasion</p>
+                        </div>
+                        </a>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+
+    </body>
+</html>

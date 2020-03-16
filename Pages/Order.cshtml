@@ -1,0 +1,77 @@
+﻿@page
+@model FlowerShop.OrderModel
+@{
+    ViewData["Title"] = "Order";
+}
+
+<div class="container p-3 my-3 border">
+<h4>Please fill out your shipping information</h4>
+<hr />
+<div class="row" asp-validation-summary="All">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Order.FirstName" class="control-label"></label>
+                <input asp-for="Order.FirstName" class="form-control" />
+                <span asp-validation-for="Order.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.LastName" class="control-label"></label>
+                <input asp-for="Order.LastName" class="form-control" />
+                <span asp-validation-for="Order.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.Address" class="control-label"></label>
+                <input asp-for="Order.Address" class="form-control" />
+                <span asp-validation-for="Order.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.City" class="control-label"></label>
+                <input asp-for="Order.City" class="form-control" />
+                <span asp-validation-for="Order.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.State" class="control-label"></label>
+                <input asp-for="Order.State" class="form-control" />
+                <span asp-validation-for="Order.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.PostalCode" class="control-label"></label>
+                <input asp-for="Order.PostalCode" class="form-control" />
+                <span asp-validation-for="Order.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.Country" class="control-label"></label>
+                <input asp-for="Order.Country" class="form-control" />
+                <span asp-validation-for="Order.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.CreditCard" class="control-label"></label>
+                <input asp-for="Order.CreditCard" class="form-control" />
+                <span asp-validation-for="Order.CreditCard" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Order.Email" class="control-label"></label>
+                <input asp-for="Order.Email" class="form-control" />
+                <span asp-validation-for="Order.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create Order" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="index"><input type="button" value="Continue Shopping" class="btn-primary" /></a>
+</div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

@@ -1,0 +1,85 @@
+﻿@page
+@model FlowerShop.CartModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+
+    <h3>Cart</h3>
+    <form method="post" id="print" asp-page="cart" asp-page-handler="update">
+        <table class="table">
+            <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">In Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity <input type="submit" value="Update" class="btn-primary" /></th>
+                <th scope="col">Sub Total</th>
+                <th scope="col">Action</th>
+            </tr>
+            @foreach (var item in Model.cart)
+            {
+                <tr align="center">
+
+                    <td><img src="~/images/@item.Product.Photo" width="250" height="250" /></td>
+                    <td>@item.Product.Name</td>
+
+                    <td>@item.Product.Description</td>
+                    <td>@item.Product.InStock</td>
+                    <td>$@item.Product.Price</td>
+                    <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                    <td>
+                        $@(item.Product.Price * item.Quantity)
+                    </td>
+                    <td align="center">
+                        <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id"><input type="button" value="Delete" class="btn-danger" /></a>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="6" align="right">Total</td>
+                <td align="center">$@Model.Total</td>
+                <td align="center">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-page="/Order"><input type="button" value="Checkout" class="btn-primary" /></a>
+                    }
+                    else
+                    {
+                        <a asp-page="/Account/Login" asp-area="Identity"><input type="button" value="Login To Complete Order" class="btn-primary" /></a>
+                    }
+                </td>
+            </tr>
+        </table>
+    </form>
+    <button type="submit" class="btn-primary" onclick="return validateInput('print')">Print Order</button>
+    <a asp-page="/StoreFront"><input type="button" value="Continue Shopping" class="btn-primary" /></a>
+
+</body>
+</html>
+
+
+@section Scripts{
+    <script>
+    function validateInput(print) {
+        var restorpage = document.body.innerHTML;
+ var printcontent = document.getElementById(print).innerHTML;
+    document.body.innerHTML = printcontent;
+         window.print();
+ document.body.innerHTML = restorpage;
+    }
+    </script>
+}
+
